@@ -1,11 +1,8 @@
-from django.http import HttpRequest
+from django.http import HttpResponse
 from django.shortcuts import render
 
 def login(request):
     return render(request, 'login.html')
 
-def realogin(request):
-    return render(request, 'realogin.html')
-
 def home(request):
-    return HttpRequest("prima pagina")
+    return HttpResponse("First Page")
