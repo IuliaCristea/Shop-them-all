@@ -5,4 +5,4 @@ def login(request):
     return render(request, 'login.html')
 
 def home(request):
-    return HttpResponse("First Page")
+    return HttpResponse("Home Page")
