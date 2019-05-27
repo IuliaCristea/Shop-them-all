@@ -9,4 +9,5 @@ install:
 
 # run test scripts
 script:
-- python Shop-them-all/manage.py test
+- cd Shop-them-all
+- python manage.py test
