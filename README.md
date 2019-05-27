@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/IuliaCristea/Shop-them-all.svg?branch=RefactoredMaster)](https://travis-ci.com/IuliaCristea/Shop-them-all)
