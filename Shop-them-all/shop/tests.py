@@ -27,4 +27,4 @@ class SmthModelTests(TestCase):
         """
         smth = Smth();
         smth.ceva = "wtf?"
-        self.assertIs(smth.ceva == "wtf ", True)
+        self.assertIs(smth.ceva == "wtf?", True)
