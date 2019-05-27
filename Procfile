@@ -1,1 +1,1 @@
-web: python subfolder/manage.py runserver 0.0.0.0:$PORT
+web: python Shop-them-all/manage.py runserver 0.0.0.0:$PORT
