@@ -1,6 +1,4 @@
 {% for prod in products %}
-
-    {{ prod.Name }}
-    {{ prod.Price }}
-
+    {{ prod.name }}
+    <img src = '{{prod.picturePath}}'>
 {% endfor %}

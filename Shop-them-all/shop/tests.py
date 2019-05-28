@@ -5,7 +5,6 @@ import datetime
 
 from django.test import TestCase
 
-from .models import Smth
 
 
 class SmthModelTests(TestCase):

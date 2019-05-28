@@ -13,4 +13,5 @@ def get_prduct_details(request):
         'culoare' : 'rosie',
         'products': all_prods,
     }
+    print(len(all_prods))
     return render(request,'product_details.html', context)
