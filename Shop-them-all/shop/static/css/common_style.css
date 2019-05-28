@@ -1,0 +1,23 @@
+footer
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 6%;
+    width: 100%;
+    background-color: rgb(20, 18, 18);
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
+
+.badge
+{
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.row
+{
+    margin-top: 80px;
+}
