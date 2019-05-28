@@ -42,8 +42,7 @@
       
 
 <div class="container">
-  <form action="/action_page.php">
-   
+  <form method="post">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -54,33 +53,59 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form">
-                       
+                        <form class="form-horizontal" role="form" action="/register" method="post">
+
+                            {% csrf_token %}
+
                             <div class = "form-group">
-                                <label for = "usr">Email:</label>
-                                <input type = "text" class = "form-control" id = "usr">
+                                <label>Email:</label>
+                                {% if form.email.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.email.errors }}
+                                </div>
+                                {% endif %}
+                                {{ form.email }}
                             </div>
 
                             <div class = "form-group">
-                                <label for = "usr">Name:</label>
-                                <input type = "text" class = "form-control" id = "usr">
+                                <label>Name:</label>
+                                {% if form.username.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.username.errors }}
+                                </div>
+                                {% endif %}
+                                {{ form.username }}
                             </div>
-                            
+
                             <div class = "form-group">
-                                <label for = "usr">Password:</label>
-                                <input type = "text" class = "form-control" id = "usr">
+                                <label>Password:</label>
+                                {% if form.password1.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.password1.errors }}
+                                </div>
+                                {% endif %}
+                                {{ form.password1 }}
                             </div>
-                             
+
+                            <div class = "form-group">
+                                <label>Confirm Password:</label>
+                                {% if form.password2.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.password2.errors }}
+                                </div>
+                                {% endif %}
+                                {{ form.password2 }}
+                            </div>
 
                             <div class="form-group last">
                                 <div class="col-sm-offset-4 col-sm-9">
-                                    <button type="submit" class="btn  btn-sm">
+                                    <button method="post" type="submit" class="btn  btn-sm">
                                         Register</button>                                    
                                </div>
                             </div>
                         </form>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
