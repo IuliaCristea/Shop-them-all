@@ -28,3 +28,20 @@ class Product(models.Model):
     size = models.CharField(max_length=5, null=True)
     description = models.CharField(max_length=500)
     id_vendor = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
+
+class Buys(models.Model):
+    class Meta:
+        unique_together = (('id_product', 'id_user'),)
+    id_product = models.IntegerField()
+    id_user = models.IntegerField()
+
+class Vendor(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=100)
+
+class Sells(models.Model):
+    class Meta:
+        unique_together = (('id_product', 'id_vendor'),)
+    id_product = models.IntegerField()
+    id_vendor = models.IntegerField()

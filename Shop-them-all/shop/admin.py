@@ -7,3 +7,5 @@ from .models import Category
 admin.site.register(Product)
 admin.site.register(Shop)
 admin.site.register(Category)
+
+# Register your models here.

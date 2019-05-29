@@ -1,7 +1,7 @@
 {% load static %}
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Register Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{% static 'css/common_style.css' %}">
@@ -18,13 +18,13 @@
       </div>
 
        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="./">Home</a></li>
        </ul>
 
        <ul class="nav navbar-nav navbar-right">
-         <li><a href="#./login.html"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-         <li><a href="./realogin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-         <li><a href = "#"><span class = "glyphicon glyphicon-shopping-cart"><span class = "badge"> X </span></a></li>
+         <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+         <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         <li><a href = "/cart"><span class = "glyphicon glyphicon-shopping-cart"><span class = "badge"> X </span></a></li>
        </ul>
 
        <form class="navbar-form navbar-left" action="/action_page.php">
