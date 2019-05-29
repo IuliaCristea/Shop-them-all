@@ -13,7 +13,8 @@ class Shop(models.Model):
         return self.name
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    address = models.CharField(max_length=100)
+    xMap = models.IntegerField()
+    yMap = models.IntegerField()
 
 class Product(models.Model):
     def __str__(self):
