@@ -1,0 +1,151 @@
+#categories {
+  padding-left: 250px;
+  transition: all 0.4s ease 0s;
+}
+
+#ShopsUl{
+  margin-top: 10%;
+  margin-left: -240px;
+  background: #f2f2f2;
+  transition: all 0.4s ease 0s;
+  border-radius: 20px;
+  position:relative;
+  float:left;
+  }
+
+#categories.active {
+  padding-left: 0;
+}
+
+#categories.active #sidebar-categ {
+  left: 0;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+  padding-left: 60px;
+}
+
+.sidebar-nav li a span:before {
+  position: absolute;
+  left: 0;
+  color: #41484c;
+  text-align: center;
+  width: 20px;
+  line-height: 18px;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li.active {
+  color: #222;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #222;
+  background: none;
+}
+
+#grid-container {
+	width:80%;
+    display: grid;
+    position: absolute;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 18%;
+    margin-top: 6%;
+    margin-bottom: 10%;
+}
+
+#grid-item {
+	width:97%;
+	height: 100%;
+	position: relative;
+	float:left;
+	margin-left: 7%;
+}
+
+#image{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    heigth: 80%;
+    opacity:0.8;
+}
+#image:hover{
+    opacity: 1;
+}
+
+.produse{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+
+@media (max-width:767px) {
+    #categories {
+      padding-left: 0;
+    }
+
+    #sidebar-categ {
+      left: 0;
+    }
+
+    #categories.active {
+      position: relative;
+      left: 250px;
+    }
+
+    #categories.active #sidebar-categ {
+      left: 250px;
+      width: 250px;
+      transition: all 0.4s ease 0s;
+    }
+}
+
+footer
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 6%;
+    width: 100%;
+    background-color: rgb(20, 18, 18);
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
