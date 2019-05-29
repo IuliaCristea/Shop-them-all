@@ -13,4 +13,6 @@ urlpatterns = [url(r'^$', views.home, name='home'),
 			   url(r'^product', views.get_prduct_details, name="product"),
 			   path('shop/<str:shop_name>/<str:categ>', views.get_prod_by_categ),
 			   path('shop/<str:shop_name>', views.get_shop_list),
+               url(r'^cart', views.cart, name="cart"),
+			   url(r'^search?', views.search, name="search")
 			   ]
