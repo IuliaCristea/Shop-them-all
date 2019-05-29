@@ -45,7 +45,7 @@
             <nav id = "sidebar-categ">
                 <ul id = "ShopsUl" class = "sidebar-nav nav">
                     <li class = "sidebar-brand">
-                        <a href = "#home"><span class="fa fa-home solo"> Categories </span></a>
+                        <a href = "/shop/{{shop.name}}"><span class="fa fa-home solo"> Categories </span></a>
                     </li>
                     {% for categ in all_categories %}
                     <li>
@@ -64,8 +64,10 @@
             <a href = "/product/{{prod.id}}" >
                 <img id = "image" src = '{{prod.picturePath}}'>
             </a>
-            <h3 class= "produse">{{ prod.name }}</h3>
-            <h5 class= "produse">{{ prod.price }} lei </h5>
+            <div id = "produse">
+                <h3>{{ prod.name }}</h3>
+                <h5>{{ prod.price }} lei </h5>
+            </div>
         </div>
         {%endfor%}
     </div>
