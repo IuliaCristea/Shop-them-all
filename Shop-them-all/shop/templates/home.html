@@ -39,7 +39,6 @@
     </nav>
     <div id="wrapper">
         <!-- Sidebar -->
-
             <nav id="spy">
                 <ul id="ShopsUl" class="sidebar-nav nav">
                     <li class="sidebar-brand">
@@ -47,14 +46,56 @@
                     </li>
                     {%for shop in all_shops%}
                     <li>
-                        <a href="./shop/{{shop.name}}" data-scroll>
+                        <a id="{{shop.name}}" onclick="MarkMeOnMap('{{shop.name}}')" data-scroll>
                             <span class="fa fa-anchor solo">{{shop.name}}</span>
                         </a>
                     </li>
                     {%endfor%}
                 </ul>
             </nav>
-
     </div>
+
+    <div id="shopMap">
+        <img id="imgMap" src = "{% static 'images/map.png' %}"/>
+    </div>
+
+
+
+
+    <footer class="container-fluid text-center">
+        <p>@Copyright 2019 ShopThemAll</p>
+    </footer>
+
 </body>
 </html>
+
+<script type="text/javascript">
+
+
+    var jsonMap = JSON.parse('{{ shops_map | escapejs }}');
+
+    function removeElementsByClass(className){
+      var elements = document.getElementsByClassName(className);
+     while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+     }
+    }
+
+    function MarkMeOnMap(shop_name)
+    {
+        removeElementsByClass('location_pin');
+        var img = new Image();
+        img.src = "{% static 'images/location_pin.png' %}";
+        img.className  = "location_pin";
+        var div = document.getElementById('shopMap');
+        div.appendChild(img);
+        img.style.position =  "absolute";
+        img.style.left = jsonMap[shop_name][0] + document.getElementById('imgMap').offsetLeft  + 'px';
+        img.style.top = jsonMap[shop_name][1] + document.getElementById('imgMap').offsetTop + 'px';
+        img.style.width = '25px';
+        img.style.height = '25px';
+    }
+
+
+
+</script>
