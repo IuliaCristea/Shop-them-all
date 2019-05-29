@@ -56,7 +56,7 @@
     </div>
 
     <div id="shopMap">
-        <img id="imgMap" src = "{% static 'images/map.png' %}"/>
+        <img id="imgMap" src = "{% static 'images/map2.png' %}"/>
     </div>
 
 
@@ -88,14 +88,21 @@
         img.src = "{% static 'images/location_pin.png' %}";
         img.className  = "location_pin";
         var div = document.getElementById('shopMap');
-        div.appendChild(img);
-        img.style.position =  "absolute";
-        img.style.left = jsonMap[shop_name][0] + document.getElementById('imgMap').offsetLeft  + 'px';
-        img.style.top = jsonMap[shop_name][1] + document.getElementById('imgMap').offsetTop + 'px';
-        img.style.width = '25px';
-        img.style.height = '25px';
-    }
 
+        img.style.width = '45px';
+        img.style.height = '45px';
+
+        var a = document.createElement("a");
+        a.style.position =  "absolute";
+        a.style.left = jsonMap[shop_name][0] + document.getElementById('imgMap').offsetLeft  + 'px';
+        a.style.top = jsonMap[shop_name][1] + document.getElementById('imgMap').offsetTop + 'px';
+        a.style.width = '45px';
+        a.style.height = '45px';
+        a.setAttribute("href","shop/"+shop_name);
+        a.appendChild(img);
+        div.appendChild(a);
+
+    }
 
 
 </script>
