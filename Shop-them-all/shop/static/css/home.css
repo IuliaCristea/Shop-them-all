@@ -108,6 +108,7 @@
 
 #wrapper {
   padding-left: 0;
+  margin-left:5%;
 }
 
 #sidebar-wrapper {
@@ -135,18 +136,13 @@
 
 }
 
-.map{
-    background:#f2f2f2;
-    position: relative;
-    margin-left:2%;
-    float: left;
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 30px;
-}
 
 #shopMap img:first-child{
+    background:#f2f2f2;
     position: relative;
-    width: 80%;
-    height: 80%;
+    margin-top: 3%;
+    margin-left:5%;
+    width: 790px;
+    height: 558px;
+    border-radius: 20px;
 }

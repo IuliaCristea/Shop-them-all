@@ -25,14 +25,16 @@
                 <li><a href = "/cart"><span class = "glyphicon glyphicon-shopping-cart"><span class = "badge"> X </span></span></a></li>
             </ul>
 
-            <form class="navbar-form navbar-left" action="/action_page.php">
+            <form class="navbar-form navbar-left" action="/search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="search">
+
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
+                        <button class="btn btn-default" type="submit" onclick="Search">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </div>
+
                 </div>
             </form>
         </div>
@@ -42,11 +44,11 @@
             <nav id="spy">
                 <ul id="ShopsUl" class="sidebar-nav nav">
                     <li class="sidebar-brand">
-                        <a href="./"><span class="fa fa-home solo">Stores</span></a>
+                        <a href=""><span class="fa fa-home solo">Stores</span></a>
                     </li>
                     {%for shop in all_shops%}
                     <li>
-                        <a id="{{shop.name}}" onclick="MarkMeOnMap('{{shop.name}}')" data-scroll>
+                        <a id="{{shop.name}}" onclick="MarkMeOnMap('{{shop.name}}',true)" data-scroll>
                             <span class="fa fa-anchor solo">{{shop.name}}</span>
                         </a>
                     </li>
@@ -56,7 +58,7 @@
     </div>
 
     <div id="shopMap">
-        <img id="imgMap" src = "{% static 'images/map.png' %}"/>
+        <img id="imgMap" src = "{% static 'images/map.png'  %}"/>
     </div>
 
 
@@ -73,6 +75,7 @@
 
 
     var jsonMap = JSON.parse('{{ shops_map | escapejs }}');
+    console.log(jsonMap);
 
     function removeElementsByClass(className){
       var elements = document.getElementsByClassName(className);
@@ -81,21 +84,43 @@
      }
     }
 
-    function MarkMeOnMap(shop_name)
+     removeElementsByClass('location_pin');
+
+    {%if search_resulted_shop  %}
+        var shops_json = JSON.parse('{{ search_resulted_shop | escapejs }}');
+        console.log(shops_json);
+        shops_json.forEach(function(elem){MarkMeOnMap(elem,false);});
+
+    {%endif%}
+
+    function MarkMeOnMap(shop_name, deletePrev=false)
     {
-        removeElementsByClass('location_pin');
+    console.log(deletePrev);
+        if(deletePrev)
+            removeElementsByClass('location_pin');
         var img = new Image();
         img.src = "{% static 'images/location_pin.png' %}";
         img.className  = "location_pin";
         var div = document.getElementById('shopMap');
-        div.appendChild(img);
-        img.style.position =  "absolute";
-        img.style.left = jsonMap[shop_name][0] + document.getElementById('imgMap').offsetLeft  + 'px';
-        img.style.top = jsonMap[shop_name][1] + document.getElementById('imgMap').offsetTop + 'px';
-        img.style.width = '25px';
-        img.style.height = '25px';
-    }
 
+        img.style.width = '45px';
+        img.style.height = '45px';
+
+        var a = document.createElement("a");
+        a.style.position =  "absolute";
+        console.log(shop_name);
+        a.style.left = jsonMap[shop_name][0] + document.getElementById('imgMap').offsetLeft + 100  + 'px';
+        a.style.top = jsonMap[shop_name][1] + document.getElementById('imgMap').offsetTop + 'px';
+        console.log(document.getElementById('imgMap').offsetLeft);
+        console.log(document.getElementById('imgMap').offsetTop);
+
+        a.style.width = '45px';
+        a.style.height = '45px';
+        a.setAttribute("href","shop/"+shop_name);
+        a.appendChild(img);
+        div.appendChild(a);
+
+    }
 
 
 </script>

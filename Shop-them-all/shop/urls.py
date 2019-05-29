@@ -12,5 +12,5 @@ urlpatterns = [url(r'^$', views.home, name='home'),
 			   url(r'^logout', LogoutView.as_view(), name="logout"),
 			   url(r'^product', views.get_prduct_details, name="product"),
                url(r'^cart', views.cart, name="cart"),
-
+			   url(r'^search?', views.search, name="search")
 			   ]
