@@ -57,8 +57,8 @@
 						</tr>
 					</thead>
 					<tbody>
-                    {%for product in all_selected_prod%}
-						<tr>
+                    {%for product in all_selected_prods%}
+						<tr id="product{{forloop.counter}}" class="product">
 							<td data-th="Product">
 								<div class="row">
 									<div class="col-sm-2 hidden-xs"><img src="{{product.picturePath}}" alt="..." class="img-responsive"/></div>
@@ -68,27 +68,26 @@
 									</div>
 								</div>
 							</td>
-							<td data-th="Price">{{product.price}}</td>
+							<td data-th="Price" id="price{{forloop.counter}}">{{product.price}}</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1" id="select_quantity">
+								<input type="number" class="form-control text-center selected_quantity" id="selected_quantity{{forloop.counter}}" value="1">
 							</td>
-							<td data-th="Subtotal" class="text-center">{{product.price}}</td>
+							<td data-th="Subtotal" class="text-center subtotal"  id="subtotal{{forloop.counter}}">{{product.price}}</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><i class="fa fa-refresh" id="refresh_button"></i></button>
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o" id="delete_button"></i></button>
+								<button class="btn btn-danger btn-sm delete_button" id="delete_button{{forloop.counter}}"><i class="fa fa-trash-o" ></i></button>
 							</td>
 						</tr>
                     {%endfor%}
 					</tbody>
 					<tfoot>
 						<tr class="visible-xs">
-							<td class="text-center"><strong>Total 1.99</strong></td>
+							<td class="text-center"><strong>Total: </strong></td>
 						</tr>
 						<tr>
 							<td><a href="./" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center" id="total_price"><strong>Total: </strong></td>
-							<td><a href="./" class="btn btn-success btn-block" id="checkout_btn">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td class="hidden-xs text-center" id="total_price">Total: <strong></strong></td>
+							<td><a href="./" class="btn btn-success btn-block" id="checkout_btn" onclick=alert("Congratulations!")>Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>
@@ -102,6 +101,51 @@
 </html>
 
 <script type="text/javascript">
-    
+    var total = document.getElementById("total_price");
+    var subtotals = document.getElementsByClassName("subtotal");
+    var t = 0;
+    for (var i=0; i<subtotals.length; i++)
+    {
+        var value = parseFloat(subtotals[i].textContent);
+        t = t + value;
+    }
+    total.textContent = total.textContent + t;
+
+    var changeq = document.getElementsByClassName("selected_quantity");
+    for (var j=0; j<changeq.length; j++)
+    {
+        changeq[j].onchange = function f(e){
+                                            var idx = e.currentTarget.id.substring(17);
+                                            var subtotal = document.getElementById("subtotal"+idx);
+                                            var valinit = parseFloat(subtotal.textContent);
+                                            var price = document.getElementById("price"+idx);
+                                            var p = parseFloat(price.textContent);
+                                            var quantity = parseFloat(e.currentTarget.value);
+                                            var st = p * quantity;
+                                            subtotal.textContent = st;
+                                            var total = document.getElementById("total_price");
+                                            text = total.textContent.substring(7);
+                                            var t = parseFloat(text);
+                                            t = t + st - valinit;
+                                            total.textContent = "Total: " + t;
+                                            }
+    }
+    var prods = document.getElementsByClassName("product");
+    var dels = document.getElementsByClassName("delete_button");
+    for (var j=0; j<dels.length; j++)
+    {
+        dels[j].onclick = function f (e){
+                                            var idx = e.currentTarget.id.substring(13);
+                                            var subtotal = document.getElementById("subtotal"+idx);
+                                            var valinit = parseFloat(subtotal.textContent);
+                                            var total = document.getElementById("total_price");
+                                            text = total.textContent.substring(7);
+                                            var t = parseFloat(text);
+                                            t = t - valinit;
+                                            total.textContent = "Total: " + t;
+                                            var produs = document.getElementById("product"+idx);
+                                            produs.parentElement.removeChild(produs);
+                                        }
+    }
 
 </script>
