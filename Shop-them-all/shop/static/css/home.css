@@ -145,8 +145,11 @@
     border-radius: 30px;
 }
 
+
 #shopMap img:first-child{
     position: relative;
+    margin-left:2%;
     width: 80%;
     height: 80%;
+    border-radius: 30px;
 }
