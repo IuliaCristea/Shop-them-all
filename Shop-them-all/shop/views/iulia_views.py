@@ -38,10 +38,14 @@ def search_internal(searchText):
 
     if len(searchText) > 0:
         searchElements = searchText.split(" ");
-        firsFilter = Product.objects.filter(name__contains=searchElements[1].lower())
-        secondFilter = list(set([prod.id_vendor.name for prod in firsFilter if prod.color.lower() == searchElements[0].lower()]))
-        if len(secondFilter) == 0:
-            secondFilter = list(set([prod.id_vendor.name for prod in firsFilter]))
+        all = Product.objects.all()
+        if len(searchElements) > 1:
+            firsFilter = [prod for prod in all if searchElements[1].lower() in prod.name.lower()]
+            secondFilter = list(set([prod.id_vendor.name for prod in firsFilter if prod.color.lower() == searchElements[0].lower()]))
+            if len(secondFilter) == 0:
+                secondFilter = list(set([prod.id_vendor.name for prod in firsFilter]))
+        else:
+            secondFilter = list(set([prod.id_vendor.name for prod in all if searchElements[0].lower() in prod.name.lower()]))
 
         return json.dumps(secondFilter)
 
