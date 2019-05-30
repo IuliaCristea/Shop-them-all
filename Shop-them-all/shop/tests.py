@@ -19,7 +19,7 @@ class Test(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-    def testShirt(self):
+    def testHomeResponse(self):
         self.factory = RequestFactory()
         request = self.factory.get('/')
         response = iulia_views.home(request)
