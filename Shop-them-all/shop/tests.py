@@ -8,7 +8,9 @@ from .models import Category
 from .models import Product, Shop, Category
 from .views import iulia_views
 from django import views
-
+from .views import andreea_views
+from .views import malina_views
+from .views import ioana_views
 
 class Test(TestCase):
 
@@ -78,4 +80,17 @@ class Test(TestCase):
         response = malina_views.get_prod_by_categ(request, 'magazin1', 'category1')
         self.assertEqual(response.status_code, 200)
 
+    def testCartResponse(self):
+        cat = Category(name="category1")
+        cat.save();
+        shop = Shop(name="magazin1", xMap=0, yMap=0)
+        shop.save();
+        prod = Product(name="Product", price=10, picturePath="empty", color="red", category=cat, size="s",
+                       description="Noice", id_vendor=shop)
+        prod.save();
 
+        self.factory = RequestFactory()
+        request = self.factory.post('/cart', data={'cart_list': [1]})
+
+        response = ioana_views.cart(request)
+        self.assertEqual(response.status_code, 200)
