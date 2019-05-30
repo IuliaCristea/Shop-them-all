@@ -29,6 +29,7 @@ def get_prod_by_categ(request, shop_name, categ):
     all_prods = Product.objects.filter(id_vendor=shop, category=category)
     #all_prods = [prod for prod in all_prods if prod.category == category]
     context = {
+        'shop': shop,
         'all_prods': all_prods,
         'all_categories': all_categories
     }

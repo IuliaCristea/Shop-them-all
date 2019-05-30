@@ -1,0 +1,92 @@
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    height: 34px;
+}
+
+.single-product{
+    margin-top: 30px;
+}
+
+
+.new-arrival{
+    background: green;
+    width: 50px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.col-md-7 h3{
+    color: #555;
+}
+
+.single-product.price{
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.single-product input{
+    border: 1px solid #ccc;
+    font-weight: bold;
+    height: 33px;
+    text-align: center;
+    width: 30px;
+}
+
+.single-product .btn-primary{
+    color: #fff;
+    font-size: 15px;
+    margin-left: 20px;
+    border: none;
+    box-shadow: none !important;
+}
+
+.product-description{
+    margin-top: 50px;
+}
+
+.product-description p{
+    margin-top:30px;
+}
+
+.similar-product hr{
+    margin-bottom: 50px;
+}
+
+.title-box{
+    color: #fff;
+    width: 180px;
+    padding: 4px 10px;
+    height: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    background-color: rgb(20, 20, 20);
+
+}
+
+.title-box h2{
+    font-size: 15px;
+    margin-top:7px;
+    margin-left: 25px;
+}
+
+.title-box::after{
+    content: '';
+    border-top: 40px solid  rgb(20, 20, 20);
+    border-right: 50px solid transparent;
+    position: absolute;
+    display: flex;
+    margin-top: -4px;
+    margin-left: 170px;
+}
+
+
+.footer{
+    margin-top:30px;
+}
+
+.single-product row{
+    display: grid;
+}

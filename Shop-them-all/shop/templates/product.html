@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<body>
+   <section class="single-product">
+
+       <div style="float:left;">
+         <img style="margin-left:30%; margin-top:40%;" width="250px" height="334px" src = "https://media1.tenor.com/images/aeded46f4ab48df20237c9d26a5f0f6d/tenor.gif?itemid=8189976"/>
+       </div>
+
+       <div class="container" style="float:left">
+            <div class="row">
+                <div style="float:left; margin-left:35%;" class="col-mid-5">
+                    <img src="{{selected_prod.picturePath}}" height="300" width="230" class="d-block w-100">
+                </div>
+                <div class="col-mid-7" style="float:left; margin-left:10%">
+                    <p class =" new-arrival text-center">NEW</p>
+                    <h2> {{ selected_prod.name }} </h2>
+                    <p><b>Product code</b> : {{ selected_prod.id }} </p>
+                    <p class="price"> {{ selected_prod.price }} LEI </p>
+                    <p><b>Color</b> : {{ selected_prod.color }} </p>
+                    <p><b>Size</b> : {{ selected_prod.size }} </p>
+                    <button onclick="addCart({{ selected_prod.id }})" type="button" class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="float:left;">
+         <img style="margin-left:10%; margin-top:43%;" width="200px" height="334px" src = "https://i.gifer.com/31Dt.gif"/>
+       </div>
+
+
+        <div class="product-description" style="clear:left; margin-top:5%; margin-bottom:0;">
+            <div class="container">
+                <h5><b>Product Description</b></h5>
+                <p> {{ selected_prod.description }}</p>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="similar-product">
+        <div style="padding-bottom:100px; width=300px; overflow-x: auto; white-space:nowrap;" class="container">
+            <hr>
+            <div class="title-box">
+                <h2>Similar Products</h2>
+            </div>
+
+                {% for product in all_prods%}
+                     <a href="/product/{{product.id}}">
+                         <img src="{{product.picturePath}}" height="300" width="230">
+                     </a>
+                {% endfor %}
+        </div>
+
+    </section>
+
+
+ <footer class="container-fluid text-center">
+        <p>@Copyright 2019 ShopThemAll</p>
+ </footer>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    var  addCart = function(id)
+    {
+        var cart_list = JSON.parse(localStorage.getItem("cart_list")) || [];
+        cart_list.push(id);
+        localStorage.setItem("cart_list", JSON.stringify(cart_list));
+        var sp = document.getElementById('countedItems');
+        var val = sp.innerHTML;
+        val = parseInt(val);
+        val = val + 1;
+        sp.innerHTML = val;
+
+    }
+
+</script>
+
+{% endblock %}

@@ -1,17 +1,4 @@
-#wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
-}
 
-#ShopsUl{
-  margin-top: 10%;
-  margin-left: -240px;
-  background: #f2f2f2;
-  transition: all 0.4s ease 0s;
-  border-radius: 20px;
-  position:relative;
-  float:left;
-  }
 
 #wrapper.active {
   padding-left: 0;
@@ -106,21 +93,16 @@
 
 @media (max-width:767px) {
 
-#wrapper {
-  padding-left: 0;
-  margin-left:5%;
-}
-
 #sidebar-wrapper {
   left: 0;
 }
 
-#wrapper.active {
+#wrapperIulia.active {
   position: relative;
   left: 250px;
 }
 
-#wrapper.active #sidebar-wrapper {
+#wrapperIulia.active #sidebar-wrapper {
   left: 250px;
   width: 250px;
   transition: all 0.4s ease 0s;
@@ -136,6 +118,26 @@
 
 }
 
+#wrapperIulia {
+  transition: all 0.4s ease 0s;
+  position:absolute;
+    margin-top: 2%;
+  margin-left: 30px;
+}
+
+#ShopsUl1{
+
+  margin-left: 2%;
+  background: #f2f2f2;
+  transition: all 0.4s ease 0s;
+  border-radius: 20px;
+
+  }
+
+#shopMap {
+    position:absolute;
+    margin-left: 20%;
+}
 
 #shopMap img:first-child{
     background:#f2f2f2;
@@ -143,6 +145,20 @@
     margin-top: 3%;
     margin-left:5%;
     width: 790px;
-    height: 558px;
+    height: 508px;
     border-radius: 20px;
+}
+
+#gif{
+    margin-top: 3%;
+
+    position:relative;
+    margin-left: 80%;
+}
+
+#gif img:first-child{
+    width: 300px;
+    height: 500px;
+    border-radius: 20px;
+
 }
