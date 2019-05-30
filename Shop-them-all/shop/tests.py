@@ -5,25 +5,5 @@ import datetime
 
 from django.test import TestCase
 
-
-
-class SmthModelTests(TestCase):
-    pass
-    # def test1(self):
-    #     """
-    #     was_published_recently() returns False for questions whose pub_date
-    #     is in the future.
-    #     """
-    #     smth = Smth();
-    #     smth.ceva = "wtf?"
-    #     self.assertIs(smth.ceva == "?wtf?", False)
-    #
-    #
-    # def test2(self):
-    #     """
-    #     was_published_recently() returns False for questions whose pub_date
-    #     is in the future.
-    #     """
-    #     smth = Smth();
-    #     smth.ceva = "wtf?"
-    #     self.assertIs(smth.ceva == "wtf?", True)
+from django.contrib.auth.models import AnonymousUser, User
+from django.test import RequestFactory, TestCase
