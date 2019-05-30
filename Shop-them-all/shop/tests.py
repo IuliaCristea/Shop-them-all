@@ -25,3 +25,7 @@ class Test(TestCase):
         response = iulia_views.home(request)
         self.assertEqual(response.status_code, 200)
 
+    def testShopCreation(self):
+        shop = Shop(name="magazin", xMap=0, yMap=0)
+        shop.save();
+        self.assertEqual(1, len(Shop.objects.all()))
