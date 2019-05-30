@@ -68,4 +68,14 @@ class Test(TestCase):
         response = malina_views.get_shop_list(request, 'magazin1')
         self.assertEqual(response.status_code, 200)
 
+    def testCategoryResponse(self):
+        shop = Shop(name="magazin1", xMap=0, yMap=0)
+        shop.save();
+        cat = Category(name="category1")
+        cat.save();
+        self.factory = RequestFactory()
+        request = self.factory.get('/shop/magazin1/category1')
+        response = malina_views.get_prod_by_categ(request, 'magazin1', 'category1')
+        self.assertEqual(response.status_code, 200)
+
 
