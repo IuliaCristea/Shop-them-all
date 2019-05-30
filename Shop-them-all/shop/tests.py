@@ -59,6 +59,13 @@ class Test(TestCase):
         response = andreea_views.product(request, 1)
         self.assertEqual(response.status_code, 200)
 
+    def testShopResponse(self):
+        shop = Shop(name="magazin1", xMap=0, yMap=0)
+        shop.save();
 
+        self.factory = RequestFactory()
+        request = self.factory.get('/shop/magazin1')
+        response = malina_views.get_shop_list(request, 'magazin1')
+        self.assertEqual(response.status_code, 200)
 
 
