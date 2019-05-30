@@ -29,3 +29,10 @@ class Test(TestCase):
         shop = Shop(name="magazin", xMap=0, yMap=0)
         shop.save();
         self.assertEqual(1, len(Shop.objects.all()))
+
+    def testCategoryCreation(self):
+        cat = Category(name="category")
+        cat.save();
+        self.assertEqual(1, len(Category.objects.all()))
+
+
