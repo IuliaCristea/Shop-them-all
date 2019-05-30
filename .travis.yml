@@ -11,4 +11,5 @@ install:
 script:
 - cd Shop-them-all
 - python manage.py migrate
+- - python manage.py collectstatic
 - python manage.py test
