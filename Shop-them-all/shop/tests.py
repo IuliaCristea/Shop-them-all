@@ -35,4 +35,16 @@ class Test(TestCase):
         cat.save();
         self.assertEqual(1, len(Category.objects.all()))
 
+    def testProductCreation(self):
+        cat = Category(name="category1")
+        cat.save();
+        shop = Shop(name="magazin1", xMap=0, yMap=0)
+        shop.save();
+        prod = Product(name="Product", price=10, picturePath="empty", color="red", category=cat, size="s",
+                       description="Noice", id_vendor=shop)
+        prod.save();
+        self.assertEqual(1, len(Category.objects.all()))
+
+
+
 
