@@ -3,18 +3,16 @@
 {% load static %}
 <html lang="en">
 <body>
-   <section class="single-product">
-
-       <div style="float:left;">
-         <img style="margin-left:30%; margin-top:40%;" width="250px" height="334px" src = "https://media1.tenor.com/images/aeded46f4ab48df20237c9d26a5f0f6d/tenor.gif?itemid=8189976"/>
+       <div style="float:left; margin-left:65px; margin-top:70px;">
+         <img width="250px" height="334px" src = "https://media1.tenor.com/images/aeded46f4ab48df20237c9d26a5f0f6d/tenor.gif?itemid=8189976"/>
        </div>
 
-       <div class="container" style="float:left">
-            <div class="row">
-                <div style="float:left; margin-left:35%;" class="col-mid-5">
-                    <img src="{{selected_prod.picturePath}}" height="300" width="230" class="d-block w-100">
+       <div class="cont" style="float:left;width:600px; margin-left: 80px; margin-top:50px;">
+            <div class="row" >
+                <div style="float:left; margin-left: 170px;" >
+                    <img src="{{selected_prod.picturePath}}" height="300" width="230" margin-top="35%" >
                 </div>
-                <div class="col-mid-7" style="float:left; margin-left:10%">
+                <div style="float:left; margin-left:10%">
                     <p class =" new-arrival text-center">NEW</p>
                     <h2> {{ selected_prod.name }} </h2>
                     <p><b>Product code</b> : {{ selected_prod.id }} </p>
@@ -26,20 +24,17 @@
             </div>
         </div>
 
-        <div style="float:left;">
+       <div style="float:left; margin-left:185px;">
          <img style="margin-left:10%; margin-top:43%;" width="200px" height="334px" src = "https://i.gifer.com/31Dt.gif"/>
        </div>
 
 
-        <div class="product-description" style="clear:left; margin-top:5%; margin-bottom:0;">
-            <div class="container">
+        <div class="product-description" style="clear:left; margin-top:5%; margin-bottom:0; margin-left: 600px;">
+            <div >
                 <h5><b>Product Description</b></h5>
                 <p> {{ selected_prod.description }}</p>
             </div>
         </div>
-
-
-    </section>
 
     <section class="similar-product">
         <div style="padding-bottom:100px; width=300px; overflow-x: auto; white-space:nowrap;" class="container">
