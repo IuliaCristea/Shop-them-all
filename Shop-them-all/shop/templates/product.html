@@ -1,83 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/product.css' %}">
-    <link rel="stylesheet" href="{% static 'css/common_style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Shop them all!</title>
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Shop them all</a>
-            </div>
-            <ul class="nav navbar-nav">
-            <li ><a href="home.html">Home</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#./login.html"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                <li><a href="./realogin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href = "#"><span class = "glyphicon glyphicon-shopping-cart"><span class = "badge"> X </span></span></a></li>
-            </ul>
-
-            <form class="navbar-form navbar-left" action="/action_page.php">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </nav>
    <section class="single-product">
-        <div class="container">
+
+       <div style="float:left;">
+         <img style="margin-left:30%; margin-top:40%;" width="250px" height="334px" src = "https://media1.tenor.com/images/aeded46f4ab48df20237c9d26a5f0f6d/tenor.gif?itemid=8189976"/>
+       </div>
+
+       <div class="container" style="float:left">
             <div class="row">
-                <div class="col-mid-5">
+                <div style="float:left; margin-left:35%;" class="col-mid-5">
                     <img src="{{selected_prod.picturePath}}" height="300" width="230" class="d-block w-100">
                 </div>
-                <div class="col-mid-7">
+                <div class="col-mid-7" style="float:left; margin-left:10%">
                     <p class =" new-arrival text-center">NEW</p>
                     <h2> {{ selected_prod.name }} </h2>
                     <p><b>Product code</b> : {{ selected_prod.id }} </p>
                     <p class="price"> {{ selected_prod.price }} LEI </p>
                     <p><b>Color</b> : {{ selected_prod.color }} </p>
                     <p><b>Size</b> : {{ selected_prod.size }} </p>
-                    <label> Quantity: </label>
-                    <input type="text" value="1">
-                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                    <button onclick="addCart({{ selected_prod.id }})" type="button" class="btn btn-primary">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <div class="product-description">
+
+        <div style="float:left;">
+         <img style="margin-left:10%; margin-top:43%;" width="200px" height="334px" src = "https://i.gifer.com/31Dt.gif"/>
+       </div>
+
+
+        <div class="product-description" style="clear:left; margin-top:5%; margin-bottom:0;">
             <div class="container">
                 <h5><b>Product Description</b></h5>
-                <p> {{ selected_prod.description }} </p>
+                <p> {{ selected_prod.description }}</p>
             </div>
         </div>
+
+
     </section>
 
     <section class="similar-product">
-        <div class="container">
+        <div style="padding-bottom:100px; width=300px; overflow-x: auto; white-space:nowrap;" class="container">
             <hr>
             <div class="title-box">
                 <h2>Similar Products</h2>
             </div>
-            <div class="row">
-                <div class="col-mid-3">
-                    {% for product in all_prods%}
-                    <img src="{{product.picturePath}}" height="300" width="230" class="d-block w-100">
 
-                    {%endfor%}
-                </div>
-            </div>
+                {% for product in all_prods%}
+                     <a href="/product/{{product.id}}">
+                         <img src="{{product.picturePath}}" height="300" width="230">
+                     </a>
+                {% endfor %}
         </div>
 
     </section>
@@ -89,3 +63,21 @@
 
 </body>
 </html>
+<script type="text/javascript">
+
+    var  addCart = function(id)
+    {
+        var cart_list = JSON.parse(localStorage.getItem("cart_list")) || [];
+        cart_list.push(id);
+        localStorage.setItem("cart_list", JSON.stringify(cart_list));
+        var sp = document.getElementById('countedItems');
+        var val = sp.innerHTML;
+        val = parseInt(val);
+        val = val + 1;
+        sp.innerHTML = val;
+
+    }
+
+</script>
+
+{% endblock %}
